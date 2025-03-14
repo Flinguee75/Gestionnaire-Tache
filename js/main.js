@@ -1,9 +1,9 @@
 import { Task } from './task.js';
 
 class TaskManager {
-    constructor(taskFormId, taskListClass, storageKey) {
+    constructor(taskFormId, taskListId, storageKey) {
         this.taskForm = document.getElementById(taskFormId);
-        this.taskList = document.querySelector(`.${taskListClass} .task-list`);
+        this.taskList = document.getElementById(taskListId);
         this.tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
         this.storageKey = storageKey;
         this.addTaskEvent();
@@ -20,9 +20,9 @@ class TaskManager {
     addTask() {
         const taskInput = document.getElementById('taskText');
         const taskLevel = document.getElementById('taskLevel').value;
-        const taskText = taskInput.value.trim() || 'No task';
+        const taskText = taskInput.value.trim();
 
-        if (taskText === '') return;
+        if (!taskText) return;
 
         const taskId = this.tasks.length + 1;
         const task = new Task(taskId, taskText, taskLevel);
@@ -34,7 +34,11 @@ class TaskManager {
     }
 
     saveTasks(task) {
-        this.tasks = [...this.tasks, task]; // Ajoute la nouvelle tâche
+        this.tasks.push(task); // Ajoute la nouvelle tâche
+        this.tasks.sort((a, b) => {
+            const levelOrder = { low: 1, medium: 2, high: 3 };
+            return levelOrder[a.level] - levelOrder[b.level];
+        });
         localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
     }
 
@@ -61,15 +65,30 @@ class TaskManager {
 
         taskDiv.appendChild(taskP);
         taskDiv.appendChild(taskIcon);
+
+        // Ajout de l'événement de suppression
+        taskDiv.addEventListener('click', () => this.deleteTask(taskDiv, task.text));
+
         this.taskList.appendChild(taskDiv);
+    }
+
+    deleteTask(taskDiv, taskText) {
+        // Supprime la tâche du DOM
+        taskDiv.remove();
+
+        // Supprime la tâche du tableau
+        this.tasks = this.tasks.filter(task => task.text !== taskText);
+
+        // Met à jour le localStorage
+        localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
     }
 
     updateUI() {
         this.taskList.replaceChildren();
-        this.tasks.forEach((task) => this.createTaskElement(task));
+        this.tasks.forEach(task => this.createTaskElement(task));
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new TaskManager('form-task', 'daily', 'daily-tasks');
+    new TaskManager('form-task', 'daily-tasks', 'daily-tasks');
 });

@@ -5,11 +5,13 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Planning Journalier & Hebdomadaire</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- CSS -->
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <!-- JS -->
+    <script type="module" src="js/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -17,12 +19,11 @@
         <h1 id="main-title">PAGE PLANNING</h1>
         <i class="fa-solid fa-book"></i>
     </header>
-
     <section class="planning-container">
         <div class="daily-tasks">
             <h2>📅 Tâches Journalières</h2>
             <form class="form-task" id="form-task">
-                <input type="text" name="task" id="taskText" placeholder="Ajouter une tâche">
+                <input type="text" id="taskText" autocomplete="off" placeholder="Ajouter une tâche">
                 <select name="level" id="taskLevel"  form="form-task"  >
                     <option value="default" selected disabled>Importance</option>
                     <option value="low">Hyper Tranquille</option>
@@ -30,15 +31,7 @@
                     <option value="high">Tranquille</option>
                 </select>
             </form>
-            <div class="daily task-list">
-                <div class="task">
-                    <p>Faire TP 2</p>
-                    <i class="fa-solid fa-circle level" style="color: green;"></i>
-                </div>
-                <div class="task">
-                    <p>Faire TP 2</p>
-                    <i class="fa-solid fa-circle level" style="color: green;"></i>
-                </div>
+            <div id="daily-tasks" class="task-list">
             </div>
         </div>
         <div class="weekly-tasks">
