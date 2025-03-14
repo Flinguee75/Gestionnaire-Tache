@@ -1,7 +1,9 @@
 import { Task } from './task.js';
 
 class TaskManager {
-    constructor(taskFormId, taskListId, storageKey) {
+    constructor(taskInputId,taskLevelId,taskFormId, taskListId, storageKey) {
+        this.taskInput = document.getElementById(taskInputId);
+        this.taskLevel = document.getElementById(taskLevelId);
         this.taskForm = document.getElementById(taskFormId);
         this.taskList = document.getElementById(taskListId);
         this.tasks = JSON.parse(localStorage.getItem(storageKey)) || [];
@@ -15,22 +17,27 @@ class TaskManager {
             event.preventDefault();
             this.addTask();
         });
+       this.taskLevel.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                this.addTask();
+            }
+        });
     }
 
     addTask() {
-        const taskInput = document.getElementById('taskText');
-        const taskLevel = document.getElementById('taskLevel').value;
-        const taskText = taskInput.value.trim();
+        const taskText =this.taskInput.value.trim();
+        
 
         if (!taskText) return;
 
         const taskId = this.tasks.length + 1;
-        const task = new Task(taskId, taskText, taskLevel);
+        const task = new Task(taskId, taskText, this.taskLevel.value);
 
         this.saveTasks(task);
         this.updateUI();
 
-        taskInput.value = ''; // Réinitialisation du champ
+        this.taskInput.value = ''; // Réinitialisation du champ
     }
 
     saveTasks(task) {
@@ -39,6 +46,7 @@ class TaskManager {
             const levelOrder = { low: 1, medium: 2, high: 3 };
             return levelOrder[a.level] - levelOrder[b.level];
         });
+        console.log(this.tasks);
         localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
     }
 
@@ -90,5 +98,6 @@ class TaskManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new TaskManager('form-task', 'daily-tasks', 'daily-tasks');
+    new TaskManager('daily-taskText','daily-taskLevel','daily-form-task', 'daily-tasks', 'daily-tasks');
+    new TaskManager('weekly-taskText','weekly-taskLevel','weekly-form-task', 'weekly-tasks', 'weekly-tasks');
 });

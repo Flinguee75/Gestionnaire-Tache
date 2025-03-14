@@ -22,9 +22,9 @@
     <section class="planning-container">
         <div class="daily-tasks">
             <h2>📅 Tâches Journalières</h2>
-            <form class="form-task" id="form-task">
-                <input type="text" id="taskText" autocomplete="off" placeholder="Ajouter une tâche">
-                <select name="level" id="taskLevel"  form="form-task"  >
+            <form class="form-task" id="daily-form-task">
+                <input type="text" id="daily-taskText" autocomplete="off" placeholder="Ajouter une tâche">
+                <select name="level" id="daily-taskLevel"  form="form-task"  >
                     <option value="default" selected disabled>Importance</option>
                     <option value="low">Hyper Tranquille</option>
                     <option value="medium">Super Tranquille</option>
@@ -33,15 +33,26 @@
             </form>
             <div id="daily-tasks" class="task-list">
             </div>
+            <div class="auto-arrange">
+                <button type="button" class="fa-solid fa-star"></button>
+                <span>Arrangement automatique</span>
+            </div>
         </div>
         <div class="weekly-tasks">
             <h2>📆 Tâches Hebdomadaires</h2>
-            <form class="form-task">
-                <input type="text" name="weekly-task" id="weekly-task" placeholder="Ajouter une tâche">
+            <form class="form-task" id="weekly-form-task">
+                <input type="text" id="weekly-taskText" autocomplete="off" placeholder="Ajouter une tâche">
+                <select name="level" id="weekly-taskLevel"  form="form-task"  >
+                    <option value="default" selected disabled>Importance</option>
+                    <option value="low">Hyper Tranquille</option>
+                    <option value="medium">Super Tranquille</option>
+                    <option value="high">Tranquille</option>
+                </select>
             </form>
-            <div class="task-list">
+            <div  id="weekly-tasks" class="task-list">
                 <!-- Ajoute ici les tâches hebdomadaires -->
             </div>
+            
         </div>
     </section>
 </body>
