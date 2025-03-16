@@ -1,64 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Planning Journalier & Hebdomadaire</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- CSS -->
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="footer.css" />
     <!-- JS -->
     <script type="module" src="js/main.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
-</head>
-<body>
+    <script type="module" src="footer.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
     <header id="header">
-        <h1 id="main-title">PLANNING</h1>
+      <h1 id="main-title">PLANNING</h1>
     </header>
     <section class="planning-container">
-        <div class="daily-tasks">
-            <h2>📅 Tâches Journalières</h2>
-            <form class="form-task" id="daily-form-task">
-                <input type="text" id="daily-taskText" autocomplete="off" placeholder="Ajouter une tâche">
-                <select name="level" id="daily-taskLevel"  form="form-task"  >
-                    <option value="default" selected disabled>Importance</option>
-                    <option value="low">Hyper Tranquille</option>
-                    <option value="medium">Super Tranquille</option>
-                    <option value="high">Tranquille</option>
-                </select>
-            </form>
-            <div id="daily-tasks" class="task-list">
-            </div>
-            <div class="auto-arrange">
-                <button type="button" class="fa-solid fa-star"></button>
-                <span>Arrangement automatique</span>
-            </div>
+      <div class="daily-tasks">
+        <h2>📅 Tâches Journalières</h2>
+        <form class="form-task" id="daily-form-task">
+          <input
+            type="text"
+            id="daily-taskText"
+            autocomplete="off"
+            placeholder="Ajouter une tâche"
+          />
+          <select name="level" id="daily-taskLevel" form="form-task">
+            <option value="default" selected disabled>Importance</option>
+            <option value="low">Hyper Tranquille</option>
+            <option value="medium">Super Tranquille</option>
+            <option value="high">Tranquille</option>
+          </select>
+        </form>
+        <div id="daily-tasks" class="task-list"></div>
+        <div class="auto-arrange">
+          <button type="button" class="fa-solid fa-star"></button>
+          <span>Arrangement automatique</span>
         </div>
-        <div class="weekly-tasks">
-            <h2>📆 Tâches Hebdomadaires</h2>
-            <form class="form-task" id="weekly-form-task">
-                <input type="text" id="weekly-taskText" autocomplete="off" placeholder="Ajouter une tâche">
-                <select name="level" id="weekly-taskLevel"  form="form-task"  >
-                    <option value="default" selected disabled>Importance</option>
-                    <option value="low">Hyper Tranquille</option>
-                    <option value="medium">Super Tranquille</option>
-                    <option value="high">Tranquille</option>
-                </select>
-            </form>
-            <div  id="weekly-tasks" class="task-list">
-                <!-- Ajoute ici les tâches hebdomadaires -->
-            </div>
-            
+      </div>
+      <div class="weekly-tasks">
+        <h2>📆 Tâches Hebdomadaires</h2>
+        <form class="form-task" id="weekly-form-task">
+          <input
+            type="text"
+            id="weekly-taskText"
+            autocomplete="off"
+            placeholder="Ajouter une tâche"
+          />
+          <select name="level" id="weekly-taskLevel" form="form-task">
+            <option value="default" selected disabled>Importance</option>
+            <option value="low">Hyper Tranquille</option>
+            <option value="medium">Super Tranquille</option>
+            <option value="high">Tranquille</option>
+          </select>
+        </form>
+        <div id="weekly-tasks" class="task-list">
+          <!-- Ajoute ici les tâches hebdomadaires -->
         </div>
+      </div>
     </section>
     <footer>
-        <div class="boat-container">
-            <div class="boat">
-                <img src="bateau-a-voile.png" alt="bateau">
-            </div>
+        
+        <div class="waves back">
+          <svg viewBox="0 24 150 28" preserveAspectRatio="none">
+            <defs>
+              <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"></path>
+            </defs>
+            <use xlink:href="#gentle-wave" x="48" y="5"></use>
+            <use xlink:href="#gentle-wave" x="48" y="7"></use>
+          </svg>
+          <div class="boat">
+            <div class="sail1"></div>
+            <div class="sail2"></div>
+            <div class="hull"></div>
+          </div>
         </div>
-    </footer>
-</body>
+        
+        <div class="waves front">
+          <svg viewBox="0 24 150 28" preserveAspectRatio="none">
+            <defs>
+              <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"></path>
+            </defs>
+            <use xlink:href="#gentle-wave" x="48" y="0"></use>
+            <use xlink:href="#gentle-wave" x="48" y="3"></use>
+          </svg>
+        </div>
+        
+      </footer>
+  </body>
 </html>

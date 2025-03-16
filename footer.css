@@ -1,0 +1,161 @@
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    z-index: 10;
+  }
+  
+  /* Vagues */
+  .waves {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Hauteur fixée à 100px */
+  }
+  
+  .waves svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .waves use {
+    animation: wavewave 5s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    fill: dodgerblue;
+    opacity: 0.7;
+  }
+  
+.waves:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -100px;
+    height: 100px;
+    background: dodgerblue;
+}
+  
+  @keyframes wavewave {
+    0% {
+      transform: translate(-90px);
+    }
+    100% {
+      transform: translate(85px);
+    }
+  }
+  
+  /* Bateau */
+  .boat {
+    position: fixed;
+    bottom: 50px; /* Placer le bateau au-dessus des vagues */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    animation: bob 4s ease-in-out alternate infinite;
+}
+  
+@keyframes bob {
+    0% {
+      transform: translateX(-50%) translateY(0);
+    }
+    100% {
+      transform: translateX(-50%) translateY(40px);
+    }
+  }
+  
+  .boat .hull {
+    width: 80px;
+    height: 30px;
+    background: firebrick;
+    border-radius: 0 0 40px 40px;
+    border-top: 2px solid darkred;
+  }
+  
+  .boat .sail1,
+  .boat .sail2 {
+    position: absolute;
+    height: 0;
+    
+  }
+  
+  .boat .sail1 {
+    width: 0;
+    border-bottom: 50px solid white;
+    border-left: 40px solid transparent;
+    left: -10px;
+    top: -55px;
+  }
+  
+  .boat .sail2 {
+    width: 0;
+    border-bottom: 60px solid white;
+    border-right: 50px solid transparent;
+    right: -10px;
+    top: -65px;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: midnightblue;
+    }
+    footer {
+      background: linear-gradient(to top, #2c3e50, #34495e);
+    }
+    .waves use {
+      fill: royalblue;
+    }
+    .boat .hull {
+      background: darkred;
+      border-top-color: #600000;
+    }
+    .boat .sail1,
+    .boat .sail2 {
+      border-bottom-color: whitesmoke;
+    }
+  }
+  
+  .waves use:nth-child(1) {
+    animation-delay: 0s;
+    animation-duration: 5s;
+    fill: 	#30b1ce ;
+  }
+  .waves use:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+    fill: 	#318db2;
+
+    
+  }
+  .waves use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 10s;
+  }
+
+
+  .waves.back use:nth-child(2) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .waves.back use:nth-child(3) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  .waves.front {
+    z-index: 3;
+  }
+  .waves.front use:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .waves.front use:nth-child(3) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+    fill: 	#003b61;
+  }
+  

@@ -137,13 +137,6 @@ select {
     color: #903017;
 }
 
-footer {
-    padding: 15px 0;
-    width: 100%;
-    height: 100px;
-    margin-top: auto;
-    color: white;
-}
 @media screen and (max-width: 912px) {
     form {
         flex-direction: column;
@@ -162,39 +155,4 @@ footer {
         
     }
     
-}
-
-.boat-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.boat {
-    position: absolute;
-    bottom: 10px;
-    left: -60px;
-    animation: sailBoat 15s linear infinite;
-    width: 60px; /* Ajustez selon la taille de votre image */
-    height: 60px;
-}
-
-.boat img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-@keyframes sailBoat {
-    from {
-        transform: translateX(-60px);
-    }
-    to {
-        transform: translateX(calc(100vw + 60px));
-    }
-}
-
-.boat {
-    animation: sailBoat 15s linear infinite; /* Changez la durée ici (10s) pour ajuster la vitesse */
 }
